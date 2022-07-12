@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { MockProvider } from 'ng-mocks';
 import { of } from 'rxjs';
 
-fdescribe('AppComponent', () => {
+describe('AppComponent', () => {
   const todoList: Todo[] = [{
     userId:    1,
     id:        1,
@@ -16,7 +16,19 @@ fdescribe('AppComponent', () => {
     id:        2,
     title:     'bb',
     completed: true
-  }
+  },
+    {
+      userId:    3,
+      id:        3,
+      title:     'cc',
+      completed: false
+    },
+    {
+      userId:    4,
+      id:        4,
+      title:     'dd',
+      completed: false
+    }
 ]
 
   beforeEach(async () => {
@@ -32,23 +44,22 @@ fdescribe('AppComponent', () => {
     }).compileComponents();
   });
 
-  it('should create the app', () => {
+  it('Deve renderizar o app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'teste-unitario-angular'`, () => {
+  it(`tem que ter o titilo 'teste-unitario-angular'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('teste-unitario-angular');
   });
 
-  it('should render title', () => {
+  it('Deve ter um titulo', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    console.log(compiled.querySelector('h2')?.textContent)
     expect(compiled.querySelector('h2')?.textContent).toContain('Meus afazeres');
   });
 
@@ -56,7 +67,14 @@ fdescribe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const app = fixture.componentInstance;
-    console.log(app.todos, todoList)
     expect(app.todos).toEqual(todoList)
-  })
+  });
+
+  it('A lista de Tarefas tem que ser igual', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    console.log(compiled.querySelector('app-todo'));
+  });
+
 });

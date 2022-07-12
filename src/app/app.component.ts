@@ -21,9 +21,6 @@ export class AppComponent implements OnInit, OnDestroy {
       next: todos => this.todos = todos,
       error: err => { }
     })
-
-
-
   }
 
   ngOnDestroy() {

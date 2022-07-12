@@ -23,10 +23,4 @@ describe('TodoService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('ele deve chamar um GET com o endpoint correto', () => {
-    const spy = spyOn(http, 'get').and.callThrough();
-    service.getTodos();
-    expect(spy).toHaveBeenCalledWith('https://jsonplaceholder.typicode.com/todos');
-  })
-
 });
